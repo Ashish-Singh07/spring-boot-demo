@@ -38,11 +38,15 @@ public class EmployeeController {
     
     // url : http://localhost:8080/sortemployees?sortBy=age         -    Path Params
     @GetMapping(path = "/sortemployees")
-    public String getEmployeePathParam(@PathParam("sortBy") String sortBy) {
+    public String getEmployeePathParam(@PathParam("sortBy") String sortBy,
+                                        @PathParam("limit") Integer limit) {
         if(sortBy == null ){
             return "No sorting order mentioned";       //  will print No sorting order mentioned
-        }else {
-            return "Sort the given field by " + sortBy ;       //  will print Sort the given field by (age/whatever is passed as the path param)
+        }else if (limit == null) {
+            return "No limit mentioned";       //  will print No limit mentioned
+        }
+        else {
+            return "Sort the given field by " + sortBy + " limit " + limit;       //  will print Sort the given field by (age/whatever is passed as the path param)
         }
     }
 
