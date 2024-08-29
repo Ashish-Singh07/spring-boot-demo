@@ -11,6 +11,9 @@ import java.time.LocalDate;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 /*
@@ -72,5 +75,9 @@ public class EmployeeController {
         }
     }
 
-
+    @PostMapping("/employees")
+    public EmployeeDTO postMethodName(@RequestBody EmployeeDTO employeeDTO  ) {
+        return employeeService.createNewEmployee(employeeDTO);
+    }
 }
+ 
